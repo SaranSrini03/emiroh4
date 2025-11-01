@@ -14,45 +14,19 @@ import {
 } from "@/data/imports";
 import ProfileHeader from "@/components/ProfileHeader";
 import QuickKpis from "@/components/QuickKpis";
-
-// Exported page values
-export const PROFILE = {
-  name: "John Doe",
-  category: "Fashion, Beauty",
-  location: "Bangalore, India",
-  gender: "Male",
-  age: 21,
-  image: "https://i.pravatar.cc/150?img=3",
-};
-
-export const PLATFORMS = ["Instagram", "YouTube", "Facebook", "TikTok"] as const;
-
-export const INSIGHTS = [
-  { k: "Followers", v: "145K" },
-  { k: "Following", v: "1,245" },
-  { k: "Posts", v: "456" },
-  { k: "Engagement Rate", v: "14.5%" },
-  { k: "Reach", v: "145K" },
-  { k: "Views", v: "18.7M" },
-] as const;
-
-export const TOP_CONTENT_COUNT = 4;
-
-export const PAST_CAMPAIGN_ROWS = [
-  { brand: "Axe Lifestyle", posts: 14, likes: "Avg 13.5K", com: "Avg 1.4K", er: "12.5%", st: "Active" },
-  { brand: "Alo Revive", posts: 11, likes: "Avg 11.4K", com: "Avg 1.2K", er: "9.8%", st: "Active" },
-  { brand: "Neo Perfume", posts: 9, likes: "Avg 9.4K", com: "Avg 1.1K", er: "8.3%", st: "Active" },
-  { brand: "Oric Beauty", posts: 8, likes: "Avg 8.4K", com: "Avg 1.0K", er: "5.9%", st: "Active" },
-] as const;
-
-export const REVIEWS_COUNT = 3;
-
-// Section titles / classes
-export const SOCIAL_PLATFORMS_SECTION_TITLE = "Social platforms";
-export const SOCIAL_PLATFORMS_CLASS_NAME = "mt-6";
-export const INSIGHT_SECTION_TITLE = "Insight";
-export const TOP_CONTENT_SECTION_TITLE = "Top Performing Content";
-export const REVIEWS_SECTION_TITLE = "Reviews";
+import {
+  PROFILE,
+  PLATFORM_STATS,
+  INSIGHTS,
+  TOP_CONTENT_COUNT,
+  PAST_CAMPAIGN_ROWS,
+  REVIEWS_COUNT,
+  SOCIAL_PLATFORMS_SECTION_TITLE,
+  SOCIAL_PLATFORMS_CLASS_NAME,
+  INSIGHT_SECTION_TITLE,
+  TOP_CONTENT_SECTION_TITLE,
+  REVIEWS_SECTION_TITLE,
+} from "@/data/globaldata";
 
 export default function Home() {
   return (
@@ -66,7 +40,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1200px] px-4 py-6">
           {/* Top profile header */}
           <ProfileHeader
-            name={PROFILE.name}
+            name={PROFILE.name}   
             category={PROFILE.category}
             location={PROFILE.location}
             gender={PROFILE.gender}
@@ -78,14 +52,38 @@ export default function Home() {
           {/* Social platforms */}
           <Section title={SOCIAL_PLATFORMS_SECTION_TITLE} className={SOCIAL_PLATFORMS_CLASS_NAME}>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-              {PLATFORMS.map((p, i) => (
-                <PlatformCard key={p} name={p} colorIdx={i} />
+              {PLATFORM_STATS.map((p, i) => (
+                <PlatformCard
+                  key={p.name}
+                  name={p.name}
+                  colorIdx={i}
+                  followers={p.followers}
+                  growthPct={p.growthPct}
+                  growthRateRank={p.growthRateRank}
+                  engagementRate={p.engagementRate}
+                  badgeSrc={p.badgeSrc}
+                />
               ))}
             </div>
           </Section>
 
           {/* Insight tiles */}
-          <Section title={INSIGHT_SECTION_TITLE} className="mt-6">
+          <Section title={
+            <div className="flex items-center justify-between">
+              <div className="text-left">{INSIGHT_SECTION_TITLE}</div>
+              <div className="relative">
+                <select className="block appearance-none w-full bg-white border border-gray-300 px-4 py-2 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-neutral-500 focus:border-neutral-500 sm:text-sm">
+                  <option>Instagram</option>
+                  <option>TikTok</option>
+                  <option>YouTube</option>
+                  <option>Facebook</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
+              </div>
+            </div>
+          } className="mt-6">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
               {INSIGHTS.map((x) => (
                 <Insight key={x.k} label={x.k} value={x.v} />
