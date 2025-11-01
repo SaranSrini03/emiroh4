@@ -21,6 +21,9 @@ export { Bars } from "@/components/charts/Bars";
 export { Donut } from "@/components/charts/Donut";
 export { MiniColumnChart } from "@/components/charts/MiniColumnChart";
 export { TopContentLine } from "@/components/charts/TopContentLine";
+export { AverageActivity } from "@/components/charts/AverageActivity";
+export { EngRate } from "@/components/charts/EngRate";
+export { AudienceGender } from "@/components/charts/AudienceGender";
 
 // Additional grouped components
 export { default as ProfileHeader } from "@/components/profile/ProfileHeader";

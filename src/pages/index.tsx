@@ -7,7 +7,9 @@ import {
   StackedBars,
   type StackedBarRow,
   Bars,
-  Donut,
+  AverageActivity,
+  EngRate,
+  AudienceGender,
   MiniColumnChart,
   WorldMapSkeleton,
   ComparisonList,
@@ -101,33 +103,38 @@ export default function Home() {
 
 
           {/* Audience & Activity */}
-          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Card title="Sentiment Tracking">
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-3 w-350">
+            <Card title="Sentiment Tracking (post comments)" className="w-150 mr-20">
               <Bars />
             </Card>
-            {/* <Card title="Average Activity">
-              <Donut />
-            </Card> */}
-            <Card title="Loyalty" className="mt-6 md:mt-0 md:col-span-1 lg:col-span-1">
+            <Card title="Loyalty" className="mt-6 lg:mt-0 lg:col-span-1 w-full ml-40">
               <StackedBars rows={loyaltyRows} axis={loyaltyAxis}/>
             </Card>
-            {/* <Card title="Audience Gender">
-              <Donut colors="violet" />
-            </Card> */}
           </div>
           {/* Past Campaign table */}
           <Section title="Past Campaign" className="mt-6">
             <PastCampaignTable rows={PAST_CAMPAIGN_ROWS} />
           </Section>
 
+          {/* Charts: Average Activity, Eng. Rate, Audience Gender */}
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <Card title="Average Activity">
+              <AverageActivity />
+            </Card>
+            <Card title="Eng. Rate (1.58%)">
+              <EngRate />
+            </Card>
+            <Card title="Audience Gender">
+              <AudienceGender />
+            </Card>
+          </div>
+
           {/* Maps / Lists */}
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-            <Card title="Audience Country (State)">
+            <Card title="Audience Country (State)" className="md:col-span-2">
               <WorldMapSkeleton />
             </Card>
-            <Card title="Eng. Rate Comparison">
-              <ComparisonList />
-            </Card>
+
           </div>
 
 
