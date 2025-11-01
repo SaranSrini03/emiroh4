@@ -1,4 +1,4 @@
-import { MiniLineChart } from "./charts/MiniLineChart";
+ import { MiniLineChart } from "@/data/imports";
 
 export function PlatformCard({
   name,
@@ -53,5 +53,3 @@ export function PlatformCard({
     </div>
   );
 }
-
-
