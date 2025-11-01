@@ -16,6 +16,7 @@ import {
   InsightTitle,
   TopPerformingContent,
   TopContentLine,
+  PastCampaignTable,
 } from "@/data/imports";
 import {
   PROFILE,
@@ -36,6 +37,7 @@ export default function Home() {
     { k: "Promoters", v: 55, r: 30 },
     { k: "Neutrals", v: 35, r: 50 },
   ];
+  const loyaltyAxis = ["10-30%", "30-50%", "50-70%", "70-90%"];
   return (
     <>
       <Head>
@@ -107,7 +109,7 @@ export default function Home() {
               <Donut />
             </Card> */}
             <Card title="Loyalty" className="mt-6 md:mt-0 md:col-span-1 lg:col-span-1">
-              <StackedBars rows={loyaltyRows} />
+              <StackedBars rows={loyaltyRows} axis={loyaltyAxis}/>
             </Card>
             {/* <Card title="Audience Gender">
               <Donut colors="violet" />
@@ -115,32 +117,7 @@ export default function Home() {
           </div>
           {/* Past Campaign table */}
           <Section title="Past Campaign" className="mt-6">
-            <div className="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-black/5">
-              <table className="min-w-full text-left text-sm">
-                <thead className="bg-neutral-50 text-neutral-500">
-                  <tr>
-                    <th className="px-4 py-3 font-medium">Brand</th>
-                    <th className="px-4 py-3 font-medium">Total Posts</th>
-                    <th className="px-4 py-3 font-medium">Likes</th>
-                    <th className="px-4 py-3 font-medium">Comments</th>
-                    <th className="px-4 py-3 font-medium">Eng. rate</th>
-                    <th className="px-4 py-3 font-medium">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {PAST_CAMPAIGN_ROWS.map((r) => (
-                    <tr key={r.brand} className="border-t border-neutral-100">
-                      <td className="px-4 py-3">{r.brand}</td>
-                      <td className="px-4 py-3">{r.posts}</td>
-                      <td className="px-4 py-3">{r.likes}</td>
-                      <td className="px-4 py-3">{r.com}</td>
-                      <td className="px-4 py-3">{r.er}</td>
-                      <td className="px-4 py-3"><span className="rounded-full bg-emerald-50 px-2 py-1 text-xs text-emerald-700">{r.st}</span></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <PastCampaignTable rows={PAST_CAMPAIGN_ROWS} />
           </Section>
 
           {/* Maps / Lists */}

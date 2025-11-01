@@ -28,3 +28,4 @@ export { default as CreatorCard } from "@/components/profile/CreatorCard";
 export { default as QuickKpis } from "@/components/kpis/QuickKpis";
 export { default as InsightTitle } from "@/components/insights/InsightTitle";
 export { default as TopPerformingContent } from "@/components/content/TopPerformingContent";
+export { PastCampaignTable } from "@/components/tables/PastCampaignTable";

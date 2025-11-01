@@ -21,14 +21,14 @@ export function StackedBars({
     <div className="w-full border border-[#e8f1ff] bg-[#fafcff] p-5">
       <div className="grid grid-cols-1 gap-3 ">
         {rows.map((row) => (
-          <div key={row.k} className="">
-            <div className="mb-1 text-xs text-neutral-500">{row.k}</div>
-            <div className=" h-10 w-10 flex h-4 w-full overflow-hidden rounded-md bg-neutral-100">
+          <div key={row.k} className="flex items-center gap-3">
+            <div className="text-xs text-neutral-500 w-24 shrink-0">{row.k}</div>
+            <div className="flex-1 h-4 overflow-hidden rounded-md bg-neutral-100 h-8">
               <div
-                className="bg-gradient-to-r from-[#ff5641] to-[#ff8070]"
+                className="bg-gradient-to-r from-[#ff5641] to-[#ff8070] h-full inline-block"
                 style={{ width: `${row.v}%` }}
               />
-              <div className="bg-blue-100" style={{ width: `${row.r}%` }} />
+              <div className="bg-blue-100 h-full inline-block" style={{ width: `${row.r}%` }} />
             </div>
           </div>
         ))}
