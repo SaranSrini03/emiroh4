@@ -11,10 +11,16 @@ export { WorldMapSkeleton } from "@/components/platforms/WorldMapSkeleton";
 export { ComparisonList } from "@/components/insights/ComparisonList";
 
 export { MiniLineChart } from "@/components/charts/MiniLineChart";
-export { StackedBars } from "@/components/charts/StackedBars";
+export {
+  StackedBars,
+  defaultRows as stackedBarsDefaultRows,
+  defaultAxis as stackedBarsDefaultAxis,
+} from "@/components/charts/StackedBars";
+export type { StackedBarRow } from "@/components/charts/StackedBars";
 export { Bars } from "@/components/charts/Bars";
 export { Donut } from "@/components/charts/Donut";
 export { MiniColumnChart } from "@/components/charts/MiniColumnChart";
+export { TopContentLine } from "@/components/charts/TopContentLine";
 
 // Additional grouped components
 export { default as ProfileHeader } from "@/components/profile/ProfileHeader";

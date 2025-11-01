@@ -4,8 +4,8 @@ import {
   PlatformCard,
   Insight,
   Card,
-  MiniLineChart,
   StackedBars,
+  type StackedBarRow,
   Bars,
   Donut,
   MiniColumnChart,
@@ -15,6 +15,7 @@ import {
   QuickKpis,
   InsightTitle,
   TopPerformingContent,
+  TopContentLine,
 } from "@/data/imports";
 import {
   PROFILE,
@@ -30,6 +31,11 @@ import {
 } from "@/data/globaldata";
 
 export default function Home() {
+  const loyaltyRows: StackedBarRow[] = [
+    { k: "Advocates", v: 70, r: 20 },
+    { k: "Promoters", v: 55, r: 30 },
+    { k: "Neutrals", v: 35, r: 50 },
+  ];
   return (
     <>
       <Head>
@@ -41,7 +47,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1200px] px-4 py-6">
           {/* Top profile header */}
           <ProfileHeader
-            name={PROFILE.name}   
+            name={PROFILE.name}
             category={PROFILE.category}
             location={PROFILE.location}
             gender={PROFILE.gender}
@@ -70,7 +76,7 @@ export default function Home() {
 
           {/* Insight tiles */}
           <Section title={<InsightTitle title={INSIGHT_SECTION_TITLE} options={[...PLATFORMS]} />} className="mt-6">
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6 w-full">
               {INSIGHTS.map((x) => (
                 <Insight key={x.k} label={x.k} value={x.v} />
               ))}
@@ -79,44 +85,34 @@ export default function Home() {
 
           {/* Top Performing Content */}
           <TopPerformingContent />
-          
+
 
           {/* Charts row */}
-          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Card title="Top Performing Content">
-              <MiniLineChart />
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-[minmax(700px,_1fr)_minmax(450px,_1fr)]">
+            <Card title="Top Performing Content" className="col-span-1 w-full md:col-span-1 lg:col-span-1">
+              <TopContentLine className="w-full" />
             </Card>
-            <Card title="Post Engagement">
+            <Card title="Post Engagement" className="mt-6 md:mt-0 md:col-span-1 lg:col-span-1">
               <StackedBars />
             </Card>
-            <Card title="Sentiment Tracking">
-              <Bars />
-            </Card>
           </div>
+
 
           {/* Audience & Activity */}
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Card title="Average Activity">
+            <Card title="Sentiment Tracking">
+              <Bars />
+            </Card>
+            {/* <Card title="Average Activity">
               <Donut />
+            </Card> */}
+            <Card title="Loyalty" className="mt-6 md:mt-0 md:col-span-1 lg:col-span-1">
+              <StackedBars rows={loyaltyRows} />
             </Card>
-            <Card title="Eng. Rate (12M)">
-              <MiniColumnChart />
-            </Card>
-            <Card title="Audience Gender">
+            {/* <Card title="Audience Gender">
               <Donut colors="violet" />
-            </Card>
+            </Card> */}
           </div>
-
-          {/* Maps / Lists */}
-          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-            <Card title="Audience Country (State)">
-              <WorldMapSkeleton />
-            </Card>
-            <Card title="Eng. Rate Comparison">
-              <ComparisonList />
-            </Card>
-          </div>
-
           {/* Past Campaign table */}
           <Section title="Past Campaign" className="mt-6">
             <div className="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-black/5">
@@ -146,6 +142,17 @@ export default function Home() {
               </table>
             </div>
           </Section>
+
+          {/* Maps / Lists */}
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <Card title="Audience Country (State)">
+              <WorldMapSkeleton />
+            </Card>
+            <Card title="Eng. Rate Comparison">
+              <ComparisonList />
+            </Card>
+          </div>
+
 
           {/* Reviews */}
           <Section title={REVIEWS_SECTION_TITLE} className="mt-6">
