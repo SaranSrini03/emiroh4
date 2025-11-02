@@ -1,13 +1,6 @@
-import React from "react";
+import { REACH_DATA } from "@/data/globaldata";
 
-const reachData = [
-  { range: "<500", percentage: 18 },
-  { range: "500-1.5K", percentage: 30 },
-  { range: "1.5-2.5K", percentage: 18 },
-  { range: "2.5-3.5K", percentage: 23 },
-  { range: "3.5-4.5K", percentage: 33 },
-  { range: "4.5K+", percentage: 27 },
-];
+const reachData = REACH_DATA;
 
 const chartHeight = 180;
 const maxPercentage = 40;

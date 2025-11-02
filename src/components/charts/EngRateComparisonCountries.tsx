@@ -1,17 +1,9 @@
 import React from "react";
+import { COUNTRY_DATA } from "@/data/globaldata";
 
 type Status = "Good" | "Average";
 
-const countryData: { country: string; status: Status }[] = [
-  { country: "India", status: "Good" },
-  { country: "USA", status: "Average" },
-  { country: "UK", status: "Good" },
-  { country: "Canada", status: "Average" },
-  { country: "Italy", status: "Good" },
-  { country: "Germany", status: "Average" },
-  { country: "France", status: "Average" },
-  { country: "Saudi", status: "Good" },
-];
+const countryData = COUNTRY_DATA;
 
 export function EngRateComparisonCountries() {
   return (

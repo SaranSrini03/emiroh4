@@ -13,11 +13,9 @@ type DonutProps = {
   centerSub?: string; // e.g., "Views"
 };
 
-const defaultData: Slice[] = [
-  { label: "Views", value: 183000, color: "#f87171" }, // coral/red
-  { label: "Likes", value: 280000, color: "#f0a5c8" }, // light pink/lavender
-  { label: "Comments", value: 888, color: "#8b5cf6" } // dark magenta/purple
-];
+import { DONUT_DATA } from "@/data/globaldata";
+
+const defaultData: Slice[] = [...DONUT_DATA];
 
 const formatCompact = (n: number) => {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;

@@ -1,17 +1,9 @@
 import React from "react";
+import { CATEGORY_DATA } from "@/data/globaldata";
 
 type Status = "Good" | "Average";
 
-const categoryData: { category: string; status: Status }[] = [
-  { category: "Apparel", status: "Good" },
-  { category: "Summer outfit", status: "Average" },
-  { category: "Beauty Products", status: "Good" },
-  { category: "Men wear", status: "Average" },
-  { category: "Shoes", status: "Good" },
-  { category: "Clothes", status: "Average" },
-  { category: "Ootd", status: "Average" },
-  { category: "Online shopping", status: "Good" },
-];
+const categoryData = CATEGORY_DATA;
 
 export function EngRateComparisonCategories() {
   return (

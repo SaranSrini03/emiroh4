@@ -1,13 +1,6 @@
-import React from "react";
+import { INTEREST_DATA } from "@/data/globaldata";
 
-const interestData = [
-  { name: "Apparel", percentage: 57.5 },
-  { name: "Summer outfit", percentage: 45.1 },
-  { name: "Beauty Products", percentage: 32.5 },
-  { name: "Men wear", percentage: 57.5 },
-  { name: "Shoes", percentage: 57.5 },
-  { name: "Street style", percentage: 25.5 },
-];
+const interestData = INTEREST_DATA;
 
 export function AudienceInterest() {
   return (

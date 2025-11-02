@@ -1,13 +1,6 @@
-import React from "react";
+import { CITY_DATA } from "@/data/globaldata";
 
-const cityData = [
-  { name: "Mumbai", percentage: 57.5 },
-  { name: "Bangalore", percentage: 57.5 },
-  { name: "Chennai", percentage: 57.5 },
-  { name: "Pune", percentage: 57.5 },
-  { name: "Delhi", percentage: 57.5 },
-  { name: "Mumbai", percentage: 57.5 },
-];
+const cityData = CITY_DATA;
 
 export function AudienceTopCity() {
   return (

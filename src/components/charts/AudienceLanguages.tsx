@@ -1,13 +1,6 @@
-import React from "react";
+import { LANGUAGE_DATA } from "@/data/globaldata";
 
-const languageData = [
-  { name: "English", percentage: 44.5 },
-  { name: "Hindi", percentage: 7.5 },
-  { name: "Telugu", percentage: 45.5 },
-  { name: "Tamil", percentage: 54.5 },
-  { name: "Kannada", percentage: 9.5 },
-  { name: "Malayalam", percentage: 7.5 },
-];
+const languageData = LANGUAGE_DATA;
 
 export function AudienceLanguages() {
   return (

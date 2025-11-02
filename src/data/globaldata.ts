@@ -43,3 +43,75 @@ export const SOCIAL_PLATFORMS_CLASS_NAME = "mt-6" as const;
 export const INSIGHT_SECTION_TITLE = "Insight" as const;
 export const TOP_CONTENT_SECTION_TITLE = "Top Performing Content" as const;
 export const REVIEWS_SECTION_TITLE = "Reviews" as const;
+
+// Chart Data
+export const DONUT_DATA = [
+  { label: "Views", value: 183000, color: "#f87171" },
+  { label: "Likes", value: 280000, color: "#f0a5c8" },
+  { label: "Comments", value: 888, color: "#8b5cf6" }
+] as const;
+
+export const CITY_DATA = [
+  { name: "Mumbai", percentage: 57.5 },
+  { name: "Bangalore", percentage: 57.5 },
+  { name: "Chennai", percentage: 57.5 },
+  { name: "Pune", percentage: 57.5 },
+  { name: "Delhi", percentage: 57.5 },
+  { name: "Mumbai", percentage: 57.5 }
+] as const;
+
+export const LANGUAGE_DATA = [
+  { name: "English", percentage: 44.5 },
+  { name: "Hindi", percentage: 7.5 },
+  { name: "Telugu", percentage: 45.5 },
+  { name: "Tamil", percentage: 54.5 },
+  { name: "Kannada", percentage: 9.5 },
+  { name: "Malayalam", percentage: 7.5 }
+] as const;
+
+export const REACH_DATA = [
+  { range: "<500", percentage: 18 },
+  { range: "500-1.5K", percentage: 30 },
+  { range: "1.5-2.5K", percentage: 18 },
+  { range: "2.5-3.5K", percentage: 23 },
+  { range: "3.5-4.5K", percentage: 33 },
+  { range: "4.5K+", percentage: 27 }
+] as const;
+
+export const INTEREST_DATA = [
+  { name: "Apparel", percentage: 57.5 },
+  { name: "Summer outfit", percentage: 45.1 },
+  { name: "Beauty Products", percentage: 32.5 },
+  { name: "Men wear", percentage: 57.5 },
+  { name: "Shoes", percentage: 57.5 },
+  { name: "Street style", percentage: 25.5 }
+] as const;
+
+export const COUNTRY_DATA = [
+  { country: "India", status: "Good" as const },
+  { country: "USA", status: "Average" as const },
+  { country: "UK", status: "Good" as const },
+  { country: "Canada", status: "Average" as const }
+] as const;
+
+export const CATEGORY_DATA = [
+  { category: "Apparel", status: "Good" as const },
+  { category: "Summer outfit", status: "Average" as const },
+  { category: "Beauty Products", status: "Good" as const },
+  { category: "Men wear", status: "Average" as const },
+] as const;
+
+export const STACKED_BAR_DATA = [
+  { k: "Video", v: 12, r: 38 },
+  { k: "Stories", v: 60, r: 25 },
+  { k: "Posts", v: 45, r: 30 },
+  { k: "Reels", v: 75, r: 15 }
+] as const;
+
+export const LOYALTY_ROWS = [
+  { k: "Advocates", v: 70, r: 20 },
+  { k: "Promoters", v: 55, r: 30 },
+  { k: "Neutrals", v: 35, r: 50 },
+] as const;
+
+export const LOYALTY_AXIS = ["10-30%", "30-50%", "50-70%", "70-90%"] as const;

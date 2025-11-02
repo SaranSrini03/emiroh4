@@ -41,15 +41,13 @@ import {
   INSIGHT_SECTION_TITLE,
   REVIEWS_SECTION_TITLE,
   PLATFORMS,
+  LOYALTY_ROWS,
+  LOYALTY_AXIS,
 } from "@/data/globaldata";
 
 export default function Home() {
-  const loyaltyRows: StackedBarRow[] = [
-    { k: "Advocates", v: 70, r: 20 },
-    { k: "Promoters", v: 55, r: 30 },
-    { k: "Neutrals", v: 35, r: 50 },
-  ];
-  const loyaltyAxis = ["10-30%", "30-50%", "50-70%", "70-90%"];
+  const loyaltyRows: StackedBarRow[] = [...LOYALTY_ROWS];
+  const loyaltyAxis = [...LOYALTY_AXIS];
   return (
     <>
       <Head>
