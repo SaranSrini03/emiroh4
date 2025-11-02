@@ -60,10 +60,10 @@ export const Donut: React.FC<DonutProps> = ({ colors = "rose", data, centerValue
   let currentAngle = -90; // Start at top (-90 degrees)
 
   return (
-    <div className="flex items-start justify-between gap-6">
+    <div className="flex flex-col sm:flex-row items-start justify-between gap-4 sm:gap-6">
       {/* Pie Chart */}
-      <div className="flex flex-col items-center">
-        <svg viewBox="0 0 84 84" className="mx-auto h-64 w-64">
+      <div className="flex flex-col items-center w-full sm:w-auto">
+        <svg viewBox="0 0 84 84" className="mx-auto h-48 w-48 sm:h-56 sm:w-56 lg:h-64 lg:w-64">
           {/* Pie slices */}
           {slices.map((s, idx) => {
             const percentage = total === 0 ? 0 : (s.value / total) * 100;
@@ -88,17 +88,17 @@ export const Donut: React.FC<DonutProps> = ({ colors = "rose", data, centerValue
         </svg>
         {/* Center value and label below the pie */}
         {centerValue && (
-          <div className="mt-2 text-sm text-neutral-500">
+          <div className="mt-2 text-xs sm:text-sm text-neutral-500 text-center">
             {centerValue} {centerSub && <span>{centerSub}</span>}
           </div>
         )}
       </div>
 
       {/* Legend */}
-      <div className="space-y-3 text-sm">
+      <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm w-full sm:w-auto">
         {slices.map((s, i) => (
-          <div key={i} className="flex items-center gap-1 ml-[-40px]">
-            <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: s.color }} />
+          <div key={i} className="flex items-center gap-1 sm:gap-2">
+            <span className="inline-block h-2 w-2 rounded-full flex-shrink-0" style={{ backgroundColor: s.color }} />
             <span className="font-semibold text-neutral-700">{formatCompact(s.value)}</span>
             <span className="text-neutral-400">{s.label}</span>
           </div>

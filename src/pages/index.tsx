@@ -58,7 +58,7 @@ export default function Home() {
       </Head>
       <main className="min-h-screen bg-neutral-50 text-neutral-800">
         {/* Page container */}
-        <div className="mx-auto max-w-[1200px] px-4 py-6">
+        <div className="mx-auto max-w-[1200px] px-3 py-4 sm:px-4 sm:py-6">
           {/* Top profile header */}
           <ProfileHeader
             name={PROFILE.name}
@@ -102,22 +102,26 @@ export default function Home() {
 
 
           {/* Charts row */}
-          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-[minmax(700px,_1fr)_minmax(450px,_1fr)]">
-            <Card title="Top Performing Content" className="col-span-1 w-full md:col-span-1 lg:col-span-1">
-              <TopContentLine className="w-full" />
+          <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <Card title="Top Performing Content" className="w-full">
+              <div className="overflow-x-auto">
+                <TopContentLine className="w-full min-w-[600px]" />
+              </div>
             </Card>
-            <Card title="Post Engagement" className="mt-6 md:mt-0 md:col-span-1 lg:col-span-1">
+            <Card title="Post Engagement" className="w-full">
               <StackedBars />
             </Card>
           </div>
 
 
           {/* Audience & Activity */}
-          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-3 w-350">
-            <Card title="Sentiment Tracking (post comments)" className="w-150 mr-20">
-              <Bars />
+          <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <Card title="Sentiment Tracking (post comments)" className="w-full">
+              <div className="overflow-x-auto">
+                <Bars />
+              </div>
             </Card>
-            <Card title="Loyalty" className="mt-6 lg:mt-0 lg:col-span-1 w-full ml-40">
+            <Card title="Loyalty" className="w-full">
               <StackedBars rows={loyaltyRows} axis={loyaltyAxis}/>
             </Card>
           </div>
@@ -127,14 +131,14 @@ export default function Home() {
           </Section>
 
           {/* Charts: Average Activity, Eng. Rate, Audience Gender */}
-          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Card title="Average Activity" className="col-">
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Card title="Average Activity" className="w-full">
               <AverageActivity />
             </Card>
-            <Card title="Eng. Rate (1.58%)" className="col-span-1 md:col-end-3">
+            <Card title="Eng. Rate (1.58%)" className="w-full">
               <EngRate />
             </Card>
-            <Card title="Audience Gender" className="col-span-1">
+            <Card title="Audience Gender" className="w-full sm:col-span-2 lg:col-span-1">
               <AudienceGender />
             </Card>
           </div>

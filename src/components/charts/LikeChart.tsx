@@ -22,9 +22,9 @@ export function LikeChart() {
   const areaPath = `${pathData} L ${points[points.length - 1].x} ${chartHeight - padding} L ${points[0].x} ${chartHeight - padding} Z`;
 
   return (
-    <div className="flex">
+    <div className="flex w-full overflow-x-auto">
       {/* Y Axis */}
-      <div className="mr-3 flex flex-col justify-between text-neutral-500 text-xs" style={{ height: chartHeight + 32 }}>
+      <div className="mr-2 sm:mr-3 flex flex-col justify-between text-neutral-500 text-[10px] sm:text-xs flex-shrink-0" style={{ height: chartHeight + 32 }}>
         {[150, 125, 100, 75, 50, 25, 0].map((tick) => (
           <div key={tick} className="flex items-center gap-1">
             <span className="tabular-nums">{tick}K</span>
@@ -33,7 +33,7 @@ export function LikeChart() {
       </div>
 
       {/* Chart Area */}
-      <div className="flex-1 relative">
+      <div className="flex-1 relative min-w-[350px]">
         <div className="relative bg-neutral-100 rounded" style={{ height: chartHeight + 32 }}>
           {/* Grid lines */}
           <div className="absolute inset-0">
@@ -79,7 +79,7 @@ export function LikeChart() {
         </div>
 
         {/* X-axis labels */}
-        <div className="flex justify-between px-2 pt-2 text-xs text-neutral-600 mt-2">
+        <div className="flex justify-between px-1 sm:px-2 pt-2 text-[10px] sm:text-xs text-neutral-600 mt-2">
           {months.map((month) => (
             <div key={month} className="text-center">
               {month}
