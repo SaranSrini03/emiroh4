@@ -1,7 +1,7 @@
 // Centralized global data used across pages/components
 
 export const PROFILE = {
-  name: "John Doe",
+  name: "name",
   category: "Fashion, Beauty",
   location: "Bangalore, India",
   gender: "Male",
