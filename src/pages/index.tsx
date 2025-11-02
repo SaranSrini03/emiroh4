@@ -128,13 +128,13 @@ export default function Home() {
 
           {/* Charts: Average Activity, Eng. Rate, Audience Gender */}
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <Card title="Average Activity">
+            <Card title="Average Activity" className="col-">
               <AverageActivity />
             </Card>
-            <Card title="Eng. Rate (1.58%)">
+            <Card title="Eng. Rate (1.58%)" className="col-span-1 md:col-end-3">
               <EngRate />
             </Card>
-            <Card title="Audience Gender">
+            <Card title="Audience Gender" className="col-span-1">
               <AudienceGender />
             </Card>
           </div>

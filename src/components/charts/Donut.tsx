@@ -53,9 +53,9 @@ export const Donut: React.FC<DonutProps> = ({ colors = "rose", data, centerValue
   }));
 
   const total = slices.reduce((sum, s) => sum + s.value, 0);
-  const cx = 21;
-  const cy = 21;
-  const radius = 21; // Full radius for pie chart (no gap)
+  const cx = 42;
+  const cy = 42;
+  const radius = 36; // Full radius for pie chart (no gap)
   
   let currentAngle = -90; // Start at top (-90 degrees)
 
@@ -63,7 +63,7 @@ export const Donut: React.FC<DonutProps> = ({ colors = "rose", data, centerValue
     <div className="flex items-start justify-between gap-6">
       {/* Pie Chart */}
       <div className="flex flex-col items-center">
-        <svg viewBox="0 0 42 42" className="mx-auto h-36 w-36">
+        <svg viewBox="0 0 84 84" className="mx-auto h-64 w-64">
           {/* Pie slices */}
           {slices.map((s, idx) => {
             const percentage = total === 0 ? 0 : (s.value / total) * 100;
@@ -97,7 +97,7 @@ export const Donut: React.FC<DonutProps> = ({ colors = "rose", data, centerValue
       {/* Legend */}
       <div className="space-y-3 text-sm">
         {slices.map((s, i) => (
-          <div key={i} className="flex items-center gap-2">
+          <div key={i} className="flex items-center gap-1 ml-[-40px]">
             <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: s.color }} />
             <span className="font-semibold text-neutral-700">{formatCompact(s.value)}</span>
             <span className="text-neutral-400">{s.label}</span>

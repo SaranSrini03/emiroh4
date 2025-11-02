@@ -15,17 +15,17 @@ export function EngRate() {
       </div>
       <div className="relative">
         <div className="absolute left-0 right-0 bottom-8 border-b border-neutral-300" />
-        <div className="flex items-end gap-4" style={{ height: 200 }}>
+        <div className="flex items-end gap-1.5 " style={{ height: 200 }}>
           {values.map((v, i) => (
             <div key={i} className="relative flex flex-col items-center">
-              <div className="text-[10px] text-neutral-400 mb-1">{(v/10).toFixed(1)}%</div>
+              <div className="text-[10px] text-neutral-400 mb-2">{(v/10).toFixed(1)}%</div>
               <div className="w-6 bg-rose-300 rounded-t" style={{ height: h(v) }} />
             </div>
           ))}
         </div>
-        <div className="mt-2 grid grid-cols-12 text-[11px] text-neutral-500">
+        <div className="mt-6 grid grid-cols-12 text-[11px]  text-neutral-500">
           {months.map((m) => (
-            <div key={m} className="text-center">{m}</div>
+            <div key={m} className=" p-1 text-center">{m}</div>
           ))}
         </div>
       </div>

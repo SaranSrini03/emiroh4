@@ -13,23 +13,19 @@ export function AudienceTopCity() {
   return (
     <div className="space-y-3">
       {cityData.map((city, index) => (
-        <div key={index} className="flex items-center gap-3">
-          <span className="text-sm text-neutral-800 min-w-[100px]">{city.name}</span>
-          <div className="flex-1 h-4 bg-neutral-200 rounded-full overflow-hidden">
+        <div key={index} className="flex flex-col items-start gap-1">
+          <div className="flex items-center justify-between w-full">
+            <span className="text-sm text-neutral-800 font-medium pr-3">{city.name}</span>
+            <span className="text-sm text-neutral-800">{city.percentage}%</span>
+          </div>
+          <div className="w-full h-2 rounded-lg bg-neutral-200">
             <div
-              className="h-full rounded-full"
-              style={{
-                width: `${city.percentage}%`,
-                backgroundColor: "#f87171",
-              }}
+              className="h-full bg-[#f87171] rounded-lg"
+              style={{ width: `${city.percentage}%` }}
             />
           </div>
-          <span className="text-sm text-neutral-800 min-w-[60px] text-right">
-            {city.percentage}%
-          </span>
         </div>
       ))}
     </div>
   );
 }
-

@@ -2,34 +2,30 @@ import React from "react";
 
 const interestData = [
   { name: "Apparel", percentage: 57.5 },
-  { name: "Summer outfit", percentage: 57.5 },
-  { name: "Beauty Products", percentage: 57.5 },
+  { name: "Summer outfit", percentage: 45.1 },
+  { name: "Beauty Products", percentage: 32.5 },
   { name: "Men wear", percentage: 57.5 },
   { name: "Shoes", percentage: 57.5 },
-  { name: "Street style", percentage: 57.5 },
+  { name: "Street style", percentage: 25.5 },
 ];
 
 export function AudienceInterest() {
   return (
     <div className="space-y-3">
-      {interestData.map((item, index) => (
-        <div key={index} className="flex items-center gap-3">
-          <span className="text-sm text-neutral-800 min-w-[120px]">{item.name}</span>
-          <div className="flex-1 h-4 bg-neutral-200 rounded-full overflow-hidden">
+      {interestData.map((interest, index) => (
+        <div key={index} className="flex flex-col items-start gap-1">
+          <div className="flex items-center justify-between w-full">
+            <span className="text-sm text-neutral-800 font-medium pr-3">{interest.name}</span>
+            <span className="text-sm text-neutral-800">{interest.percentage}%</span>
+          </div>
+          <div className="w-full h-2 rounded-lg bg-neutral-200">
             <div
-              className="h-full rounded-full"
-              style={{
-                width: `${item.percentage}%`,
-                backgroundColor: "#f87171",
-              }}
+              className="h-full bg-[#f87171] rounded-lg"
+              style={{ width: `${interest.percentage}%` }}
             />
           </div>
-          <span className="text-sm text-neutral-800 min-w-[60px] text-right">
-            {item.percentage}%
-          </span>
         </div>
       ))}
     </div>
   );
 }
-
