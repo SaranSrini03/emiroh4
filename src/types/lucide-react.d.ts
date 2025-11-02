@@ -20,4 +20,9 @@ declare module 'lucide-react' {
   export const Send: Icon;
   export const MapPin: Icon;
   export const Upload: Icon;
+  
+  // Icons used in TopPerformingContent.tsx
+  export const ChevronLeft: Icon;
+  export const ChevronRight: Icon;
+  export const Pause: Icon;
 }
