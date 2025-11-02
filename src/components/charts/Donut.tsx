@@ -7,73 +7,91 @@ type Slice = {
 };
 
 type DonutProps = {
-  colors?: "rose" | "violet"; // kept for backward compat (used when no data provided)
+  colors?: "rose" | "violet"; // optional theme
   data?: Slice[];
   centerValue?: string; // e.g., "189789"
   centerSub?: string; // e.g., "Views"
 };
 
 const defaultData: Slice[] = [
-  { label: "Views", value: 183_000, color: "#fb7185" }, // rose-400
-  { label: "Likes", value: 280_000, color: "#fb8aa7" }, // pink-ish
-  { label: "Comments", value: 888, color: "#8b5cf6" }, // violet-500
+  { label: "Views", value: 183000, color: "#f87171" }, // coral/red
+  { label: "Likes", value: 280000, color: "#f0a5c8" }, // light pink/lavender
+  { label: "Comments", value: 888, color: "#8b5cf6" } // dark magenta/purple
 ];
 
-const circumference = 2 * Math.PI * 15.915; // for r=15.915
+const formatCompact = (n: number) => {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
+  if (n >= 1_000) return `${(n / 1_000).toFixed(0)}K`;
+  return `${n}`;
+};
 
-function formatCompact(n: number) {
-  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
-  if (n >= 1_000) return (n / 1_000).toFixed(0) + "K";
-  return String(n);
-}
+// Helper function to create pie slice path
+const createPieSlice = (cx: number, cy: number, radius: number, startAngle: number, endAngle: number): string => {
+  const start = {
+    x: cx + radius * Math.cos((startAngle * Math.PI) / 180),
+    y: cy + radius * Math.sin((startAngle * Math.PI) / 180),
+  };
+  const end = {
+    x: cx + radius * Math.cos((endAngle * Math.PI) / 180),
+    y: cy + radius * Math.sin((endAngle * Math.PI) / 180),
+  };
 
-export function Donut({ colors = "rose", data, centerValue, centerSub }: DonutProps) {
+  const largeArcFlag = endAngle - startAngle > 180 ? 1 : 0;
+
+  return [
+    `M ${cx} ${cy}`,
+    `L ${start.x} ${start.y}`,
+    `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${end.x} ${end.y}`,
+    "Z",
+  ].join(" ");
+};
+
+export const Donut: React.FC<DonutProps> = ({ colors = "rose", data, centerValue, centerSub }) => {
   const slices = (data && data.length ? data : defaultData).map((s, i) => ({
     ...s,
-    color: s.color ?? (i === 0 ? (colors === "rose" ? "#fb7185" : "#8b5cf6") : i === 1 ? "#fb8aa7" : "#8b5cf6"),
+    color: s.color ?? (i === 0 ? (colors === "rose" ? "#f87171" : "#8b5cf6") : i === 1 ? "#f0a5c8" : "#8b5cf6"),
   }));
 
   const total = slices.reduce((sum, s) => sum + s.value, 0);
-  let offsetPct = 0; // cumulative offset for successive arcs
+  const cx = 21;
+  const cy = 21;
+  const radius = 21; // Full radius for pie chart (no gap)
+  
+  let currentAngle = -90; // Start at top (-90 degrees)
 
   return (
-    <div className="flex items-center justify-between gap-6">
-      {/* Donut */}
+    <div className="flex items-start justify-between gap-6">
+      {/* Pie Chart */}
       <div className="flex flex-col items-center">
         <svg viewBox="0 0 42 42" className="mx-auto h-36 w-36">
-          {/* Track */}
-          <circle cx="21" cy="21" r="15.915" fill="none" stroke="#eee" strokeWidth="6" />
-          {/* Slices */}
+          {/* Pie slices */}
           {slices.map((s, idx) => {
-            const pct = total === 0 ? 0 : (s.value / total) * 100;
-            const dash = (pct / 100) * circumference;
-            const gap = circumference - dash;
-            const dashOffset = (offsetPct / 100) * circumference;
-            offsetPct += pct;
+            const percentage = total === 0 ? 0 : (s.value / total) * 100;
+            const sliceAngle = (percentage / 100) * 360;
+            const startAngle = currentAngle;
+            const endAngle = currentAngle + sliceAngle;
+
+            const pathData = createPieSlice(cx, cy, radius, startAngle, endAngle);
+
+            currentAngle = endAngle;
+
             return (
-              <circle
+              <path
                 key={idx}
-                cx="21"
-                cy="21"
-                r="15.915"
-                fill="none"
-                stroke={s.color!}
-                strokeWidth="6"
-                strokeDasharray={`${dash} ${gap}`}
-                strokeDashoffset={-dashOffset}
-                strokeLinecap="round"
-                transform="rotate(-90 21 21)"
+                d={pathData}
+                fill={s.color!}
+                stroke="#fff"
+                strokeWidth={0.5}
               />
             );
           })}
-          {/* Center text (percent or provided value) */}
-          <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" className="fill-neutral-700 text-sm font-semibold">
-            {centerValue ?? formatCompact(total)}
-          </text>
         </svg>
-        {centerSub ? (
-          <div className="mt-1 text-xs text-neutral-500">{centerSub}</div>
-        ) : null}
+        {/* Center value and label below the pie */}
+        {centerValue && (
+          <div className="mt-2 text-sm text-neutral-500">
+            {centerValue} {centerSub && <span>{centerSub}</span>}
+          </div>
+        )}
       </div>
 
       {/* Legend */}
@@ -88,6 +106,4 @@ export function Donut({ colors = "rose", data, centerValue, centerSub }: DonutPr
       </div>
     </div>
   );
-}
-
-
+};

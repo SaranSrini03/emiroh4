@@ -19,6 +19,16 @@ import {
   TopPerformingContent,
   TopContentLine,
   PastCampaignTable,
+  AudienceTopCity,
+  AudienceLanguages,
+  AudienceReach,
+  AudienceInterest,
+  EngRateComparisonCategories,
+  EngRateComparisonCountries,
+  AudienceAge,
+  FollowerChart,
+  LikeChart,
+  Reviews,
 } from "@/data/imports";
 import {
   PROFILE,
@@ -129,37 +139,59 @@ export default function Home() {
             </Card>
           </div>
 
+          {/* Audience Age, Follower Chart, Like Chart */}
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <Card title="Audience Age">
+              <AudienceAge />
+            </Card>
+            <Card title="Follower Chart">
+              <FollowerChart />
+            </Card>
+            <Card title="Like Chart">
+              <LikeChart />
+            </Card>
+          </div>
+
           {/* Maps / Lists */}
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
             <Card title="Audience Country (State)" className="md:col-span-2">
               <WorldMapSkeleton />
             </Card>
-
           </div>
 
+          {/* New Three Cards Section */}
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <Card title="Audience top city">
+              <AudienceTopCity />
+            </Card>
+            <Card title="Audience Languages">
+              <AudienceLanguages />
+            </Card>
+            <Card title="Audience Reach">
+              <AudienceReach />
+            </Card>
+          </div>
+
+          {/* Second Three Cards Section */}
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <Card title="Audience Interest">
+              <AudienceInterest />
+            </Card>
+            <Card title="Eng. Rate Comparison">
+              <EngRateComparisonCategories />
+            </Card>
+            <Card title="Eng. Rate Comparison (Audience Countries)">
+              <EngRateComparisonCountries />
+            </Card>
+          </div>
 
           {/* Reviews */}
-          <Section title={REVIEWS_SECTION_TITLE} className="mt-6">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-              {new Array(REVIEWS_COUNT).fill(0).map((_, i) => (
-                <div key={i} className="rounded-xl bg-white p-4 shadow-sm ring-1 ring-black/5">
-                  <p className="text-sm text-neutral-600">I have been extremely happy with the results of working with the creative agency, and I would highly recommend them to...</p>
-                  <div className="mt-4 flex items-center gap-3">
-                    <img
-                      src={`https://i.pravatar.cc/48?img=${i + 10}`}
-                      alt="avatar"
-                      className="h-8 w-8 rounded-full"
-                    />
-                    <div className="text-sm">
-                      <div className="font-medium">Name Here</div>
-                      <div className="text-xs text-amber-500">★★★★★</div>
-                    </div>
-                    <button className="ml-auto text-xs text-rose-600">Read More</button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Section>
+          <Reviews
+            title={REVIEWS_SECTION_TITLE}
+            reviewsCount={REVIEWS_COUNT}
+            currentPage={1}
+            totalPages={4}
+          />
         </div>
       </main>
     </>

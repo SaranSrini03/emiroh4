@@ -24,6 +24,15 @@ export { TopContentLine } from "@/components/charts/TopContentLine";
 export { AverageActivity } from "@/components/charts/AverageActivity";
 export { EngRate } from "@/components/charts/EngRate";
 export { AudienceGender } from "@/components/charts/AudienceGender";
+export { AudienceTopCity } from "@/components/charts/AudienceTopCity";
+export { AudienceLanguages } from "@/components/charts/AudienceLanguages";
+export { AudienceReach } from "@/components/charts/AudienceReach";
+export { AudienceInterest } from "@/components/charts/AudienceInterest";
+export { EngRateComparisonCategories } from "@/components/charts/EngRateComparisonCategories";
+export { EngRateComparisonCountries } from "@/components/charts/EngRateComparisonCountries";
+export { AudienceAge } from "@/components/charts/AudienceAge";
+export { FollowerChart } from "@/components/charts/FollowerChart";
+export { LikeChart } from "@/components/charts/LikeChart";
 
 // Additional grouped components
 export { default as ProfileHeader } from "@/components/profile/ProfileHeader";
@@ -32,3 +41,4 @@ export { default as QuickKpis } from "@/components/kpis/QuickKpis";
 export { default as InsightTitle } from "@/components/insights/InsightTitle";
 export { default as TopPerformingContent } from "@/components/content/TopPerformingContent";
 export { PastCampaignTable } from "@/components/tables/PastCampaignTable";
+export { default as Reviews } from "@/components/reviews/Reviews";

@@ -1,3 +1,5 @@
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+
 export function WorldMapSkeleton() {
   const countries: { name: string; pct: number }[] = [
     { name: "India", pct: 45 },
@@ -10,9 +12,25 @@ export function WorldMapSkeleton() {
   return (
     <div className="flex flex-col gap-4 md:flex-row md:items-stretch w-full">
       {/* Map area */}
-      <div className="flex-1 rounded-lg bg-neutral-100">
+      <div className="flex-1 rounded-lg ">
         <div className="flex h-56 items-center justify-center text-neutral-400 md:h-64">
-          World map
+          <ComposableMap projectionConfig={{ scale: 120 }}>
+          <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
+            {({ geographies }: { geographies: any[] }) =>
+              geographies.map((geo: any) => (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  style={{
+                    default: { fill: "#d1d5db", outline: "none" },
+                    hover: { fill: "#f87171", outline: "none" },
+                    pressed: { fill: "#ef4444", outline: "none" },
+                  }}
+                />
+              ))
+            }
+          </Geographies>
+        </ComposableMap>
         </div>
       </div>
 
